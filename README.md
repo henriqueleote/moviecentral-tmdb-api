@@ -8,8 +8,7 @@ The goal is to build a frontend that handles a custom designed by you [restful A
 We will walk you through the steps of setting up the base environment.
 * Please fork this repository.
 
-Our build tool of choice: **Vite**
-https://vitejs.dev/guide/
+Our build tool of choice: [**Vite**](https://vitejs.dev/guide/)
 
 Preferable language/superset/syntax: **TypeScript**
 
@@ -19,10 +18,10 @@ Library: **React**
 ## Post initial setup
 
 After you have successfully completed the setup of Vite+React, please install the following dependencies:
-[React Router](https://reactrouter.com/en/main/start/tutorial)
-[Styled Components](https://styled-components.com/docs/basics#installation)
-[Base Web](https://baseweb.design/getting-started/setup/)
-[Axios](https://axios-http.com/docs/intro)
+* [React Router](https://reactrouter.com/en/main/start/tutorial)
+* [Styled Components](https://styled-components.com/docs/basics#installation)
+* [Base Web](https://baseweb.design/getting-started/setup/)
+* [Axios](https://axios-http.com/docs/intro)
 
 After you have ran the project please invest in writing a good README.md file which explains the essential goal of your project and install instructions.
 
@@ -31,9 +30,9 @@ After you have ran the project please invest in writing a good README.md file wh
 
 The code structure should follow the following hirarchy:
 
-- Views (that contain the functionality and is presented as core page component) 
-- [Components (dummy;smart;pure;...)](https://javascript.plainenglish.io/react-all-about-components-35650a02ff50) & Styled (optional / if needed)
-- Services (backend endpoints handler)
+* Views (that contain the functionality and is presented as core page component) 
+* [Components (dummy;smart;pure;...)](https://javascript.plainenglish.io/react-all-about-components-35650a02ff50) & Styled (optional / if needed)
+* Services (backend endpoints handler)
 
 
 The rest is free for you to decide how to structure;-) 
