@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieById } from '../services/ApiService';
+import { Rating } from 'react-simple-star-rating'
 
 const MovieDetailView: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -8,10 +9,17 @@ const MovieDetailView: React.FC = () => {
     const [movie, setMovie] = useState([]);
 
     useEffect(() => {
+        // Fetch movie details when the component mounts
         fetchMovieById(id)
             .then((data) => setMovie(data))
             .catch((error) => console.error(error));
     }, [])
+
+    const imdbLink = "https://idmb.com/title/" + movie.imdb_id;
+
+    const handleClick = () => {
+        alert('No trailer available.');
+    };
 
     return (
         <div>
@@ -25,19 +33,31 @@ const MovieDetailView: React.FC = () => {
 
                     <div style={style.left}>
                         <div style={style.movieTitle}>{movie.title}</div>
-                        <div style={style.categories}>
-                            {/* {movie.genres.map((genre) => genre.name).join(', ')} */}
+
+                        <div style={style.ratingContainer}>
+                            <Rating
+                                initialValue={Math.round(movie.vote_average / 2)}
+                                readonly={true}
+                                size={25}
+                                style={style.rating}
+                            />
+                            <a href={imdbLink} target="_blank" rel="noopener noreferrer" style={{ verticalAlign: "super" }}>
+                                <img src="https://cdn-icons-png.flaticon.com/512/5977/5977585.png" style={style.imdb} alt="" />
+                            </a>
                         </div>
-                        <div style={style.rating}>Rating: {movie.rating}</div>
-                        <div style={style.description}>{movie.description}</div>
-                        <a
-                            href={movie.trailerUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={style.watchButton}
-                        >
-                            Watch Trailer
-                        </a>
+                        <div style={style.categories}>
+                            {
+                                movie.genres != undefined ? (movie.genres.map((genre) => genre.name).join(', '))
+                                    : (<span></span>)
+                            }
+                        </div>
+                        <p>{movie.overview}</p>
+                        <p style={{ marginTop: "30px" }}>
+                            {movie.video ? (
+                                <a href={movie.video} target="_blank" rel="noopener noreferrer" style={style.trailerButton}>Watch trailer</a>
+                            ) : <a onClick={handleClick} style={style.trailerDisabled} disabled>Watch trailer</a>}
+
+                        </p>
                     </div>
                     <div style={style.right}>
                         <img
@@ -89,7 +109,7 @@ const style = {
 
     left: {
         marginTop: "20px",
-        width: "50%",
+        width: "60%",
         height: "100%",
         float: "left"
     },
@@ -107,7 +127,45 @@ const style = {
         textTransform: "uppercase",
         fontFamily: 'Bebas Neue',
         fontSize: "45px"
-    }
+    },
+
+    categories: {
+        fontSize: "15px",
+        marginBottom: "20px",
+        color: "darkgrey"
+    },
+
+    imdb: {
+        verticalAlign: "middle",
+        width: "40px",
+        marginLeft: "10px"
+    },
+
+    trailerButton: {
+        backgroundColor: "#199319",
+        color: "white",
+        padding: "15px 25px",
+        textDecoration: "none",
+        cursor: "pointer"
+    },
+
+    trailerDisabled: {
+        backgroundColor: "grey",
+        color: "white",
+        padding: "15px 25px",
+        textDecoration: "none",
+        cursor: "default"
+    },
+
+    ratingContainer: {
+        display: "inline-block"
+    },
+
+    rating: {
+        margin: "auto",
+        display: "block",
+        verticalAlign: "middle"
+    },
 };
 
 export default MovieDetailView;
