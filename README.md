@@ -44,6 +44,21 @@ The project follows a component-based architecture, categorizing components into
   - Various styled components fall into this category, responsible for rendering styled UI elements.
   - `MovieCard` (Pure): Displays individual movie information, such as title and rating.
 
+### Services
+
+The project includes API service functions responsible for fetching movie data from the TMDb API:
+
+- `fetchMovies`: Fetches a list of movies from the TMDb API.
+- `fetchMovieById`: Fetches detailed information about a movie by its ID from the TMDb API.
+- `searchMovie`: Performs a search for movies based on a provided query.
+
+### Views
+
+The project contains two main views:
+
+- **HomeView** (Smart): Serves as the main view of the application, handling the display of movie cards and search functionality.
+- **MovieDetailView** (Smart): Responsible for displaying detailed information about a selected movie.
+
 ## API
 
 The project fetches movie data from the TMDb API, which provides extensive information about movies, including details, genres, posters, and more. You can learn more about the TMDb API [here](https://developer.themoviedb.org/reference/intro/getting-started).
