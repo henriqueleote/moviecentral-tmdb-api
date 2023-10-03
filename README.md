@@ -78,8 +78,8 @@ To get started with this project, follow these steps:
 
 Here are some screenshots from the movie website:
 
-![Home Page](readme_images/HomePage.png)
+<img src="readme_images/HomePage.png" style="width:100px;"/>
 *Caption: The Home Page displaying a list of movies.*
 
-![Movie Detail Page](readme_images/MovieDetails.png)
+<img src="readme_images/MovieDetails.png" style="width:100px;"/>
 *Caption: The Movie Detail Page showing detailed information about a selected movie.*
