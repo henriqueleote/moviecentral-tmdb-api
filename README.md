@@ -58,7 +58,7 @@ To get started with this project, follow these steps:
    git clone https://gitlab.com/henriqueleote/tb-interview-task-frontend-leote.git
    ```
 2. Navigate to the project folder:
-```shell
+   ```shell
    cd your-project-given-name
    ```
 3. Install project dependencies using npm or yarn:
