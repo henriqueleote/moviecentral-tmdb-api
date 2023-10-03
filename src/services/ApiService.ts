@@ -13,6 +13,7 @@ export const fetchMovieById = async (movieId:number) => {
             throw new Error("Network response not ok");
         }
         const data = await response.json();
+        console.log(data)
         return data;
 };
 

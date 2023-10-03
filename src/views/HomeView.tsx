@@ -5,7 +5,8 @@ import MovieCard from '../components/movie/MovieCard';
 import { fetchMovies, searchMovie } from "../services/ApiService";
 import { Input } from "baseui/input";
 import { Button } from "baseui/button";
-import {Grid, Cell} from 'baseui/layout-grid';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 // const HomeView: React.FC = () => {
@@ -28,53 +29,85 @@ const HomeView: React.FC = () => {
     const [movies, setMovies] = useState([]);
     const [value, setValue] = React.useState("");
 
-    useEffect(() => {
+    const getAllMovies = () => {
         fetchMovies()
-            .then((data) => setMovies(data))
-            .catch((error) => console.error(error));
-    }, [])
-
-    const method = () => {
-        searchMovie(value)
             .then((data) => setMovies(data))
             .catch((error) => console.error(error));
     }
 
+    useEffect(() => {
+        getAllMovies();
+    }, [])
+
+    const searchMovies = () => {
+        if (value == "") {
+            getAllMovies();
+        } else {
+            searchMovie(value)
+                .then((data) => setMovies(data))
+                .catch((error) => console.error(error));
+        }
+    }
+
+    const filteredMovies = movies.filter((movie) => movie.backdrop_path !== null);
+
     return (
-        <div>
-            <div style={{width: "300px", display:"flex"}}>
-            <Input
-                value={value}
-                onChange={e => setValue(e.target.value)}
-                placeholder="Harry Potter"
-                clearOnEscape
-                clearable
-            />
-            <Button onClick={() => method()}>Search</Button>
+        <div style={styles.mainWrapper}>
+            <h1 style={styles.title}>Simple API Website</h1>
+            <div className="container">
+                <div style={{ display: "flex", marginTop: "20px",}}>
+                    <div style={styles.searchBar}>
+                    <Input
+                        size={"default"}
+                        value={value}
+                        onChange={e => setValue(e.target.value)}
+                        placeholder="Harry Potter"
+                        clearOnEscape
+                        clearable
+                    />
+                    </div>
+
+                    <Button onClick={() => searchMovies()}>Search</Button>
+                </div>
             </div>
-
-            <DisplayMedium>
-                Movie list
-            </DisplayMedium>
-            <Grid>
-            {movies.map((movie) => (
-                <Cell span={3}>
-                    <MovieCard key={movie.id} movie={movie} />
-                </Cell>
-                
-            ))}
-                
-            </Grid>
-            
-
+            <div className="container"  style={styles.container}>
+                <div className="row">
+                    {
+                    filteredMovies.map((movie) => (
+                        <div className="col-sm-2" style={styles.col} key={movie.id}>
+                            <MovieCard movie={movie} />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }
 
 const styles = {
-    searchBar:{
-        width: '300px',
+
+    title:{
+        marginTop: "20px",
+        textAlign: "center",
+        color: "white"
     },
-  };
+    searchBar: {
+        width: '300px',
+        marginRight: "10px"
+    },
+
+    mainWrapper: {
+        padding: "20px",
+        backgroundColor: "#111"
+    },
+
+    container: {
+        marginTop: "50px"
+    },
+
+    col: {
+        marginBottom: "30px"
+    }
+};
 
 export default HomeView;
