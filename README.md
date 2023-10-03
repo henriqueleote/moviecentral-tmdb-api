@@ -30,6 +30,12 @@ This project is a movie website built using React, TypeScript, and several libra
 - **Components**:
   - API service functions are used to interact with the TMDb API, providing data to components such as `HomeView` and `MovieDetailView`.
 
+### Bootstrap
+
+- **Purpose**: Bootstrap is a popular CSS framework that provides pre-designed UI components and styles, simplifying the process of creating responsive and visually appealing websites.
+- **Components**: 
+  - Bootstrap styles and components were used throughout the project to enhance the user interface and improve the overall design.
+
 ## Project Structure
 
 ### Components
