@@ -1,10 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import {createRoot} from 'react-dom/client';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+
+import { Client as Styletron } from 'styletron-engine-atomic'
+import { Provider as StyletronProvider } from 'styletron-react'
+import { DarkTheme, BaseProvider } from 'baseui'
+
+import './index.css'
+import App from './App'
+
+const engine = new Styletron()
+
+createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <StyletronProvider value={engine}>
+      <BaseProvider theme={DarkTheme}>
+        <App />
+      </BaseProvider>
+    </StyletronProvider>
   </React.StrictMode>,
 )
