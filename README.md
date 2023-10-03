@@ -1,7 +1,6 @@
 # MovieCentral using TMDb API Project
 
-
-This project is a movie website built using React, TypeScript, and several libraries and technologies. It utilizes the free movie API from The Movie Database (TMDb).
+This project is a movie website built using React, TypeScript, and several libraries and technologies. It utilizes the free movie API from The Movie Database (TMDb) to display information about movies.
 
 ## Technologies and Libraries Used
 

@@ -10,6 +10,7 @@ function App() {
       <Routes >
         <Route path='/' element={<HomeView/>}/>
         <Route path='/movie/:id' element={<MovieDetailView/>}/>
+        <Route path='*' element={<HomeView />}/>
       </Routes >
     </Router>
   )
